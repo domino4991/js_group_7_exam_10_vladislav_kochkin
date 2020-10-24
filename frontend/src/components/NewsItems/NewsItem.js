@@ -8,6 +8,7 @@ const NewsItem = props => {
             <h3>{props.title}</h3>
             <p>{props.date}</p>
             <NavLink to={`/news/${props.id}`} className="News-link">Read full post</NavLink>
+            <button type="button" className="News-item__del" onClick={props.clicked}>Delete</button>
         </div>
     );
 };
