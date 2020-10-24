@@ -1,0 +1,39 @@
+.Comment {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 3px 1px rgba(0, 150, 136, 0.5);
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.Comment__author {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.Comment__author svg {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.Comment__text {
+    flex-grow: 1;
+}
+
+.Comment__del-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    font-size: 28px;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.Comment__del-btn:hover {
+    color: #d32f2f;
+}

@@ -7,6 +7,7 @@ const AddNewNews = props => {
     const dispatch = useDispatch();
     return (
         <section className="Add-new-news-page">
+            <h2 style={{textAlign: 'center'}}>Add new news</h2>
             <Form
                 changed={e => dispatch(changeValues(e))}
                 chooseFile={e => dispatch(addFile(e))}

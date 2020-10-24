@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
+import './Header.css';
 
 const Header = () => {
     return (
@@ -11,8 +12,11 @@ const Header = () => {
                         <li className="Header__nav-item">
                             <NavLink
                                 to="/"
+                                exact
                                 className="Header__nav-link"
                             >Home</NavLink>
+                        </li>
+                        <li className="Header__nav-item">
                             <NavLink
                                 to="/add-news"
                                 className="Header__nav-link"

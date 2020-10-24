@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {postForm} from "../../../store/actions/formActions";
+import './Form.css';
 
 const Form = props => {
     const state = useSelector(state => state.form);
@@ -35,7 +36,7 @@ const Form = props => {
                 value={state.body}
                 onChange={props.changed}
                 placeholder="Enter news content"
-                className="Form__field"
+                className="Form__field Form__text"
             />
             <input
                 type="file"

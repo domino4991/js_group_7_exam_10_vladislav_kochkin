@@ -1,0 +1,41 @@
+.Single-news {
+    margin-bottom: 50px;
+}
+
+.Single-news::after {
+    content: '';
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.Single-item__img-box {
+    float: left;
+    margin-right: 30px;
+}
+
+.Single-item__img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+}
+
+.Single-item__date {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 15px 0;
+    color: #90a4ae;
+}
+
+.Single-item__date svg {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.single-item__content {
+    line-height: 1.6;
+    letter-spacing: 0.6px;
+}

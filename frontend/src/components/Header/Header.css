@@ -1,0 +1,41 @@
+.Header {
+    background: #004d40;
+    padding: 10px 0;
+    margin-bottom: 50px;
+}
+
+.Header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Header__logo {
+    color: #e0f2f1;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.Header__nav-list {
+    list-style: none;
+    padding: 0;
+}
+
+.Header__nav-item {
+    margin-left: 25px;
+    display: inline-block;
+}
+
+.Header__nav-link {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #e0f2f1;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.Header__nav-link.active,
+.Header__nav-link:hover {
+    color: #03a9f4;
+}

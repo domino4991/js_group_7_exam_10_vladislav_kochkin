@@ -21,10 +21,11 @@ const createRouter = db => {
     });
     router.post('/', async (req, res) => {
         const item = req.body;
-        if(item.author === '' || item.comment === '') {
+        if(item.comment === '') {
             res.status(400).send({error: "Author and comment cant be empty"});
         } else {
             try {
+                if(item.author === '') item.author = "Anonymous";
                 const newsItem = await db.createItem('comments', item);
                 res.send(newsItem[0]);
             } catch (e) {

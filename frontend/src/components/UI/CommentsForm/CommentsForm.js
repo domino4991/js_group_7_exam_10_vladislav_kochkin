@@ -1,8 +1,10 @@
 import React from 'react';
+import './CommentsForm.css';
 
 const CommentsForm = props => {
     return (
         <form className="Comments-form" onSubmit={props.submited}>
+            <h3 className="Comments-form__title">Add comment</h3>
             <input
                 type="text"
                 name="author"
@@ -14,7 +16,7 @@ const CommentsForm = props => {
             <textarea
                 name="comment"
                 placeholder="Enter your comment"
-                className="Comments-form__field"
+                className="Comments-form__field Comments-form__text"
                 value={props.comment}
                 onChange={props.changed}
             />

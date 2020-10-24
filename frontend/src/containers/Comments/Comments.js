@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addNewComment, changeValueComment, deleteComment, getComments} from "../../store/actions/commentsActions";
 import CommentItem from "../../components/CommentItem/CommentItem";
 import CommentsForm from "../../components/UI/CommentsForm/CommentsForm";
+import './Comments.css';
 
 const Comments = props => {
     const {
@@ -20,6 +21,7 @@ const Comments = props => {
 
     return (
         <div className="Comments">
+            <h3 style={{fontSize: '24px'}}>Comments</h3>
             {comments.length !== 0 ? comments.map(item => <CommentItem
                key={item.id}
                author={item.author}
