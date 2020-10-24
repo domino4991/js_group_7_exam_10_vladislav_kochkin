@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {getNews} from "../../store/actions/newsActions";
+import {deleteNewsItem, getNews} from "../../store/actions/newsActions";
 import NewsItem from "../../components/NewsItems/NewsItem";
 
 const Main = () => {
@@ -18,6 +18,7 @@ const Main = () => {
                 title={item.title}
                 date={item.date}
                 id={item.id}
+                clicked={() => dispatch(deleteNewsItem(item.id))}
             />)}
         </section>
     );
