@@ -9,12 +9,14 @@ import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {newsReducer} from "./store/reducers/newsReducer";
 import {commentsReducer} from "./store/reducers/commentsReducer";
+import {formReducer} from "./store/reducers/formReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     news: newsReducer,
-    comments: commentsReducer
+    comments: commentsReducer,
+    form: formReducer
 });
 
 const store = createStore(
