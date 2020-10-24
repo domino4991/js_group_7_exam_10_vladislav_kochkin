@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getNewsItem} from "../../store/actions/newsActions";
+import SingleNewsItem from "../../components/SingleNewsItem/SingleNewsItem";
+import Comments from "../Comments/Comments";
 
 const SingleNews = props => {
-    console.log(props);
     const {newsItem, loading, error} = useSelector(state => state.news);
     const dispatch = useDispatch();
     const id = props.match.params.id;
@@ -14,10 +15,13 @@ const SingleNews = props => {
 
     return (
         <section className="Single-news-page">
-            {newsItem && <SingleNews
+            {newsItem ? <SingleNewsItem
                 title={newsItem.title}
-                date={newsItem.date}
-            />}
+                body={newsItem.body}
+            /> : <h1>404 not found</h1>}
+            <Comments
+                id={id}
+            />
         </section>
     );
 };
