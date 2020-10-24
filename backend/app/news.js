@@ -38,6 +38,28 @@ const createRouter = db => {
             res.status(500).send(e);
         }
     });
+    router.post('/', upload.single("image"), async (req, res) => {
+        const item = req.body;
+        if(item.title === '' || item.body === '') {
+            res.status(400).send({error: "Title and body cant be empty"});
+        } else {
+            try {
+                if(req.file) item.image = req.file.filename;
+                const newsItem = await db.createItem('news', item);
+                res.send(newsItem);
+            } catch (e) {
+                res.status(400).send({error: e.sqlMessage});
+            }
+        }
+    });
+    router.delete('/:id', async (req, res) => {
+        try {
+            const response = await db.deleteItem('news', req.params.id);
+            res.send(response);
+        } catch (e) {
+            res.status(400).send({error: e.sqlMessage});
+        }
+    });
     return router;
 };
 
