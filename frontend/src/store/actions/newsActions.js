@@ -1,4 +1,6 @@
 import {
+    DELETE_NEWS_ITEM_ERROR,
+    DELETE_NEWS_ITEM_REQUEST,
     GET_NEWS_ERROR, GET_NEWS_ITEM_ERROR,
     GET_NEWS_ITEM_REQUEST,
     GET_NEWS_ITEM_SUCCESS,
@@ -13,6 +15,8 @@ const getNewsError = error => ({type: GET_NEWS_ERROR, error});
 const getNewsItemRequest = () => ({type: GET_NEWS_ITEM_REQUEST});
 const getNewsItemSuccess = data => ({type: GET_NEWS_ITEM_SUCCESS, data});
 const getNewsItemError = error => ({type: GET_NEWS_ITEM_ERROR, error});
+const deleteNewsRequest = () => ({type: DELETE_NEWS_ITEM_REQUEST});
+const deleteNewsError = error => ({type: DELETE_NEWS_ITEM_ERROR, error});
 
 export const getNews = () => {
     return async dispatch => {
@@ -37,3 +41,16 @@ export const getNewsItem = id => {
         }
     };
 };
+
+export const deleteNewsItem = id => {
+    return async dispatch => {
+        dispatch(deleteNewsRequest());
+        try {
+            await axiosApi.delete(`/news/${id}`);
+            dispatch(getNews());
+        } catch (e) {
+            dispatch(deleteNewsError(e));
+        }
+    }
+}
+
