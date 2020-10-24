@@ -46,15 +46,16 @@ module.exports = db => ({
             db.query("INSERT INTO ?? SET ?", [resource, item], (err, result) => {
                 if(err) {
                     rej(err);
+                } else {
+                    item.id = result.insertId;
+                    db.query("SELECT * FROM ?? WHERE id = ?", [resource, item.id], (err, result) => {
+                        if(err) {
+                            rej(err);
+                        } else {
+                            res(result);
+                        }
+                    });
                 }
-                item.id = result.insertId;
-                db.query("SELECT * FROM ?? WHERE id = ?", [resource, item.id], (err, result) => {
-                    if(err) {
-                        rej(err);
-                    } else {
-                        res(result);
-                    }
-                });
             });
         });
     },
@@ -63,8 +64,9 @@ module.exports = db => ({
             db.query("DELETE FROM ?? WHERE id = ?", [resource, id], (err) => {
                 if(err) {
                     rej(err);
+                } else {
+                    res({successMessage: `Item with id: ${id} has been removed from table ${resource}`});
                 }
-                res({successMessage: `Item with id: ${id} has been removed from table ${resource}`});
             });
         })
     },
