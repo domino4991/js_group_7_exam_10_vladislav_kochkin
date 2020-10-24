@@ -4,6 +4,7 @@ const mysql = require('mysql');
 const config = require('./config');
 const db = require('./mysqlDb');
 const news = require('./app/news');
+const comments = require('./app/comments');
 
 const app = express();
 const PORT = 8000;
@@ -21,6 +22,7 @@ connection.connect(err => {
     }
     console.log('MySQL Database is connected');
     app.use('/news', news(db(connection)));
+    app.use('/comments', comments(db(connection)));
     app.use((req, res) => {
         res.status(404).send({"error": "404 Not found"});
     });
