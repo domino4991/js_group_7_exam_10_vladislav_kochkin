@@ -60,7 +60,11 @@ export const addNewComment = (e, id, comments, comment) => {
             newComment.push(response.data);
             dispatch(addNewCommentSuccess(newComment));
         } catch (e) {
-            dispatch(addNewCommentError(e));
+            if(e.message === 'Network error') {
+                dispatch(addNewCommentError(e.message));
+            } else {
+                dispatch(addNewCommentError(e.response.data.error));
+            }
         }
     }
 }

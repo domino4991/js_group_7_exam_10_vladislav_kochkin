@@ -25,7 +25,11 @@ export const getNews = () => {
             const response = await axiosApi.get('/news');
             dispatch(getNewsSuccess(response.data));
         } catch (e) {
-            dispatch(getNewsError(e));
+            if(e.message === 'Network error') {
+                dispatch(getNewsError(e.message))
+            } else {
+                dispatch(getNewsError(e.response.data.error));
+            }
         }
     };
 };
@@ -37,7 +41,11 @@ export const getNewsItem = id => {
             const response = await axiosApi.get(`/news/${id}`);
             dispatch(getNewsItemSuccess(response.data));
         } catch (e) {
-            dispatch(getNewsItemError(e));
+            if(e.message === 'Network error') {
+                dispatch(getNewsItemError(e.message));
+            } else {
+                dispatch(getNewsItemError(e.response.data.error));
+            }
         }
     };
 };
@@ -49,7 +57,11 @@ export const deleteNewsItem = id => {
             await axiosApi.delete(`/news/${id}`);
             dispatch(getNews());
         } catch (e) {
-            dispatch(deleteNewsError(e));
+            if(e.message === 'Network error') {
+                dispatch(deleteNewsError(e.message));
+            } else {
+                dispatch(deleteNewsError(e.response.data.error));
+            }
         }
     }
 }

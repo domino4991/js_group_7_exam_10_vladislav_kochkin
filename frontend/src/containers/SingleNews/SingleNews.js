@@ -4,6 +4,7 @@ import {getNewsItem} from "../../store/actions/newsActions";
 import SingleNewsItem from "../../components/SingleNewsItem/SingleNewsItem";
 import Comments from "../Comments/Comments";
 import './SingleNews.css';
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 const SingleNews = props => {
     const {newsItem, loading, error} = useSelector(state => state.news);
@@ -16,7 +17,8 @@ const SingleNews = props => {
 
     return (
         <section className="Single-news-page">
-            {newsItem ? <SingleNewsItem
+            {loading && <Spinner />}
+            {error ? <h3>{error}</h3> : newsItem ? <SingleNewsItem
                 title={newsItem.title}
                 body={newsItem.body}
                 date={newsItem.date}

@@ -1,7 +1,9 @@
 import React from 'react';
 import './CommentsForm.css';
+import {useSelector} from "react-redux";
 
 const CommentsForm = props => {
+    const {error} = useSelector(state => state.comments);
     return (
         <form className="Comments-form" onSubmit={props.submited}>
             <h3 className="Comments-form__title">Add comment</h3>
@@ -20,6 +22,7 @@ const CommentsForm = props => {
                 value={props.comment}
                 onChange={props.changed}
             />
+            {error && <p>{error}</p>}
             <button type="submit" className="Comments-form__btn-send">Add</button>
         </form>
     );

@@ -21,8 +21,8 @@ const createRouter = db => {
     });
     router.post('/', async (req, res) => {
         const item = req.body;
-        if(item.comment === '') {
-            res.status(400).send({error: "Author and comment cant be empty"});
+        if(item.comment === '' || !item.comment) {
+            res.status(400).send({"error": "Comment cant be empty"});
         } else {
             try {
                 if(item.author === '') item.author = "Anonymous";

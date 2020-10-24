@@ -4,6 +4,7 @@ import {addNewComment, changeValueComment, deleteComment, getComments} from "../
 import CommentItem from "../../components/CommentItem/CommentItem";
 import CommentsForm from "../../components/UI/CommentsForm/CommentsForm";
 import './Comments.css';
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 const Comments = props => {
     const {
@@ -22,11 +23,12 @@ const Comments = props => {
     return (
         <div className="Comments">
             <h3 style={{fontSize: '24px'}}>Comments</h3>
-            {comments.length !== 0 ? comments.map(item => <CommentItem
-               key={item.id}
-               author={item.author}
-               comment={item.comment}
-               clicked={() => dispatch(deleteComment(item.id, comments))}
+            {loading && <Spinner />}
+            {error ? <h3>{error}</h3> : comments.length !== 0 ? comments.map(item => <CommentItem
+                key={item.id}
+                author={item.author}
+                comment={item.comment}
+                clicked={() => dispatch(deleteComment(item.id, comments))}
             />) : <p>Комментариев нет</p>}
             <CommentsForm
                 submited={e => dispatch(addNewComment(e, id, comments, comment))}

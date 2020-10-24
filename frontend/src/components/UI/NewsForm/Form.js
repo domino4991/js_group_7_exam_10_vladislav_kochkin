@@ -15,7 +15,6 @@ const Form = props => {
             }
         });
         dispatch(postForm(e, formData));
-        props.history.replace('/');
     };
 
     return (
@@ -45,6 +44,7 @@ const Form = props => {
                 onChange={props.chooseFile}
                 className="Form__field"
             />
+            {state.error && <p>{state.error}</p>}
             <button type="submit" className="Form__btn-send">Send</button>
         </form>
     );

@@ -11,7 +11,6 @@ const postFormError = error => ({type: POST_FORM_ERROR, error});
 
 export const postForm = (e, news) => {
     e.preventDefault();
-    console.log(news);
     return async dispatch => {
         dispatch(postFormRequest());
         try {
@@ -19,7 +18,11 @@ export const postForm = (e, news) => {
             dispatch(postFormSuccess());
             dispatch(getNews());
         } catch (e) {
-            dispatch(postFormError(e));
+            if(e.message === 'Network error') {
+                dispatch(postFormError(e.message));
+            } else {
+                dispatch(postFormError(e.response.data.error));
+            }
         }
     };
 };
