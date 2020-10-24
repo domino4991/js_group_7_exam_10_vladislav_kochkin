@@ -7,15 +7,18 @@ import {compose, createStore, applyMiddleware, combineReducers} from "redux";
 import thunkMiddleware from 'redux-thunk';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
+import {newsReducer} from "./store/reducers/newsReducer";
+import {commentsReducer} from "./store/reducers/commentsReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-
+    news: newsReducer,
+    comments: commentsReducer
 });
 
 const store = createStore(
-    ,
+    rootReducer,
     composeEnhancers(applyMiddleware(thunkMiddleware))
 );
 
